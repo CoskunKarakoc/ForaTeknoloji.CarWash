@@ -1,2 +1,2 @@
-# ForaTeknoloji.CarWash
+# Fora Technology - CarWash
 Oto Yıkama Projesi
