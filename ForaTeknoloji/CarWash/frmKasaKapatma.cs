@@ -99,7 +99,6 @@ namespace CarWash
 
         public bool KasaDuzenle()
         {
-            OleDbDataReader reader;
             OleDbCommand command = new OleDbCommand();
             OleDbCommand command2 = new OleDbCommand();
             string strKomut = "";
@@ -127,7 +126,7 @@ namespace CarWash
                         return false;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }
@@ -139,11 +138,8 @@ namespace CarWash
 
         public bool KasaKapat()
         {
-            OleDbDataReader reader;
             OleDbCommand command = new OleDbCommand();
-            OleDbCommand command2 = new OleDbCommand();
             string strKomut = "";
-            string strKomut2 = "";
             using (var connection = new OleDbConnection(DataTransferObject.connectionAdress))
             {
                 try

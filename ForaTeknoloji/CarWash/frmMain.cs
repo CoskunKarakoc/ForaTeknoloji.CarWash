@@ -14,7 +14,6 @@ namespace CarWash
     public partial class frmMain : Form
     {
         private bool _dragging = false;
-        private Point _offset;
         private Point _start_point = new Point(0, 0);
         public frmMain()
         {

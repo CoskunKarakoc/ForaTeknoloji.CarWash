@@ -249,7 +249,6 @@ namespace CarWash
 
         public bool YuklenenKontoruKasayaEkleme(int yuklenenKontor)
         {
-            OleDbDataReader reader;
             OleDbCommand command = new OleDbCommand(); ;
             string strKomut = "";
             using (var connection = new OleDbConnection(DataTransferObject.connectionAdress))

@@ -443,7 +443,7 @@ namespace CarWash
                         command.Parameters.AddWithValue("@portName", seriHaberlesmeAyarlari.PortName);
                         rowsCount = command.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         rowsCount = 0;
                     }
