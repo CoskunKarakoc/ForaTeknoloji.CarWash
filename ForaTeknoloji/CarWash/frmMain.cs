@@ -27,7 +27,7 @@ namespace CarWash
             panel2.BackColor = Color.FromArgb(1, 100, 173);
             sidePanel.BackColor = Color.FromArgb(1, 100, 173);
             sidePanel.Hide();
-            this.Opacity = 0.90;
+            this.Opacity = 0.95;
         }
 
         private void button1_Click(object sender, EventArgs e)

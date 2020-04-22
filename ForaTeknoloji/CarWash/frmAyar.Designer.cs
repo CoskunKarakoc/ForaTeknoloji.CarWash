@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBoxSerial = new System.Windows.Forms.GroupBox();
+            this.txtDepozitoUcreti = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -46,6 +48,7 @@
             this.numericYikamaKontor = new System.Windows.Forms.NumericUpDown();
             this.numericYikamaSuresi = new System.Windows.Forms.NumericUpDown();
             this.groupBoxPanel = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.btnTCPAyarGonder = new System.Windows.Forms.Button();
@@ -57,9 +60,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnTCPKes = new System.Windows.Forms.Button();
             this.btnTCPBaglan = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.txtDepozitoUcreti = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBoxSerial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericYikamaKontor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYikamaSuresi)).BeginInit();
@@ -90,6 +90,26 @@
             this.groupBoxSerial.TabIndex = 0;
             this.groupBoxSerial.TabStop = false;
             this.groupBoxSerial.Text = "Kart Okuma/Yazma Ayarları";
+            // 
+            // txtDepozitoUcreti
+            // 
+            this.txtDepozitoUcreti.Location = new System.Drawing.Point(16, 166);
+            this.txtDepozitoUcreti.Name = "txtDepozitoUcreti";
+            this.txtDepozitoUcreti.Size = new System.Drawing.Size(162, 27);
+            this.txtDepozitoUcreti.TabIndex = 47;
+            this.txtDepozitoUcreti.Text = "2";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBox11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox11.ForeColor = System.Drawing.Color.Gold;
+            this.textBox11.Location = new System.Drawing.Point(16, 129);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(162, 31);
+            this.textBox11.TabIndex = 44;
+            this.textBox11.Text = "Depozito Ücreti";
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox6
             // 
@@ -323,6 +343,20 @@
             this.groupBoxPanel.TabStop = false;
             this.groupBoxPanel.Text = "Panel Ayarları";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Gold;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.Location = new System.Drawing.Point(649, 189);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(168, 84);
+            this.button2.TabIndex = 47;
+            this.button2.Text = "Ayarları Al";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // textBox8
             // 
             this.textBox8.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -468,6 +502,7 @@
             this.btnTCPBaglan.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnTCPBaglan.FlatAppearance.BorderSize = 0;
             this.btnTCPBaglan.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTCPBaglan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTCPBaglan.Location = new System.Drawing.Point(6, 174);
             this.btnTCPBaglan.Name = "btnTCPBaglan";
             this.btnTCPBaglan.Size = new System.Drawing.Size(183, 101);
@@ -475,40 +510,6 @@
             this.btnTCPBaglan.Text = "Bağlan";
             this.btnTCPBaglan.UseVisualStyleBackColor = false;
             this.btnTCPBaglan.Click += new System.EventHandler(this.btnTCPBaglan_Click);
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBox11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox11.ForeColor = System.Drawing.Color.Gold;
-            this.textBox11.Location = new System.Drawing.Point(16, 129);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(162, 31);
-            this.textBox11.TabIndex = 44;
-            this.textBox11.Text = "Depozito Ücreti";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtDepozitoUcreti
-            // 
-            this.txtDepozitoUcreti.Location = new System.Drawing.Point(16, 166);
-            this.txtDepozitoUcreti.Name = "txtDepozitoUcreti";
-            this.txtDepozitoUcreti.Size = new System.Drawing.Size(162, 27);
-            this.txtDepozitoUcreti.TabIndex = 47;
-            this.txtDepozitoUcreti.Text = "2";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Gold;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(649, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 84);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Ayarları Al";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmAyar
             // 
