@@ -88,6 +88,7 @@
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.textBox9);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(175)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 42);
             this.groupBox1.Name = "groupBox1";
@@ -181,6 +182,7 @@
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.btnYukle);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(175)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 194);
             this.groupBox2.Name = "groupBox2";

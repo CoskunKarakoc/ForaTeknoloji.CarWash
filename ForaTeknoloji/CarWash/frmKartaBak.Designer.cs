@@ -31,10 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKartaBak));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.txtToplamYukleme = new System.Windows.Forms.TextBox();
             this.txtYukluKontor = new System.Windows.Forms.TextBox();
             this.txtKartTipi = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -44,6 +42,8 @@
             this.listBoxMessage = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtToplamYukleme = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -53,11 +53,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.txtToplamYukleme);
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.txtToplamYukleme);
             this.groupBox1.Controls.Add(this.txtYukluKontor);
             this.groupBox1.Controls.Add(this.txtKartTipi);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -78,24 +78,12 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBox7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox7.ForeColor = System.Drawing.Color.Gold;
-            this.textBox7.Location = new System.Drawing.Point(199, 118);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(307, 31);
-            this.textBox7.TabIndex = 8;
-            this.textBox7.Text = "Toplam Yüklemeler";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.HotTrack;
             this.textBox6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox6.ForeColor = System.Drawing.Color.Gold;
-            this.textBox6.Location = new System.Drawing.Point(199, 81);
+            this.textBox6.Location = new System.Drawing.Point(199, 124);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(307, 31);
             this.textBox6.TabIndex = 7;
@@ -107,29 +95,17 @@
             this.textBox5.BackColor = System.Drawing.SystemColors.HotTrack;
             this.textBox5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox5.ForeColor = System.Drawing.Color.Gold;
-            this.textBox5.Location = new System.Drawing.Point(199, 44);
+            this.textBox5.Location = new System.Drawing.Point(199, 19);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(307, 31);
             this.textBox5.TabIndex = 6;
             this.textBox5.Text = "Kart Tipi";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtToplamYukleme
-            // 
-            this.txtToplamYukleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtToplamYukleme.Location = new System.Drawing.Point(56, 118);
-            this.txtToplamYukleme.Multiline = true;
-            this.txtToplamYukleme.Name = "txtToplamYukleme";
-            this.txtToplamYukleme.ReadOnly = true;
-            this.txtToplamYukleme.Size = new System.Drawing.Size(137, 31);
-            this.txtToplamYukleme.TabIndex = 2;
-            this.txtToplamYukleme.Text = "0";
-            this.txtToplamYukleme.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtYukluKontor
             // 
             this.txtYukluKontor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtYukluKontor.Location = new System.Drawing.Point(56, 81);
+            this.txtYukluKontor.Location = new System.Drawing.Point(56, 124);
             this.txtYukluKontor.Multiline = true;
             this.txtYukluKontor.Name = "txtYukluKontor";
             this.txtYukluKontor.ReadOnly = true;
@@ -141,7 +117,7 @@
             // txtKartTipi
             // 
             this.txtKartTipi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtKartTipi.Location = new System.Drawing.Point(56, 44);
+            this.txtKartTipi.Location = new System.Drawing.Point(56, 19);
             this.txtKartTipi.Multiline = true;
             this.txtKartTipi.Name = "txtKartTipi";
             this.txtKartTipi.ReadOnly = true;
@@ -168,7 +144,7 @@
             this.textBox8.BackColor = System.Drawing.SystemColors.HotTrack;
             this.textBox8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox8.ForeColor = System.Drawing.Color.Gold;
-            this.textBox8.Location = new System.Drawing.Point(199, 45);
+            this.textBox8.Location = new System.Drawing.Point(199, 61);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(307, 31);
             this.textBox8.TabIndex = 10;
@@ -192,7 +168,7 @@
             // txtOdul
             // 
             this.txtOdul.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtOdul.Location = new System.Drawing.Point(56, 45);
+            this.txtOdul.Location = new System.Drawing.Point(56, 61);
             this.txtOdul.Multiline = true;
             this.txtOdul.Name = "txtOdul";
             this.txtOdul.ReadOnly = true;
@@ -234,6 +210,30 @@
             this.panel1.Size = new System.Drawing.Size(832, 45);
             this.panel1.TabIndex = 1;
             // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBox7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox7.ForeColor = System.Drawing.Color.Gold;
+            this.textBox7.Location = new System.Drawing.Point(199, 72);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(307, 31);
+            this.textBox7.TabIndex = 12;
+            this.textBox7.Text = "Toplam Yüklemeler";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtToplamYukleme
+            // 
+            this.txtToplamYukleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtToplamYukleme.Location = new System.Drawing.Point(56, 72);
+            this.txtToplamYukleme.Multiline = true;
+            this.txtToplamYukleme.Name = "txtToplamYukleme";
+            this.txtToplamYukleme.ReadOnly = true;
+            this.txtToplamYukleme.Size = new System.Drawing.Size(137, 31);
+            this.txtToplamYukleme.TabIndex = 11;
+            this.txtToplamYukleme.Text = "0";
+            this.txtToplamYukleme.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmKartaBak
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,19 +261,19 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtToplamYukleme;
         private System.Windows.Forms.TextBox txtYukluKontor;
         private System.Windows.Forms.TextBox txtKartTipi;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtOdul;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.ListBox listBoxMessage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtToplamYukleme;
     }
 }

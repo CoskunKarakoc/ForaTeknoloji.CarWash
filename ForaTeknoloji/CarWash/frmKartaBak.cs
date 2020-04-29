@@ -43,7 +43,7 @@ namespace CarWash
                     serialPort.Open();
                     listBoxMessage.Items.Add("Kart Okuyucu Bağlantısı Sağlandı!");
                     serialPort.DiscardOutBuffer();
-                    serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                    serialPort.Write("%HR001011A72A9B526F2CE**\r"); //FFFFFFFFFFFF Varsayılan değeri
                     Thread.Sleep(200);
                     var receive = serialPort.ReadExisting();
                     var receiveTemp = int.Parse(receive.Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
