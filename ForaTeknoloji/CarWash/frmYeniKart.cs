@@ -31,17 +31,17 @@ namespace CarWash
         private void frmYeniKart_Load(object sender, EventArgs e)
         {
             txtDepozitoUcreti.Text = seriHaberlesmeAyarlari.DepozitoUcreti.ToString();
-            serialPort = new SerialPort();
-            serialPort.PortName = seriHaberlesmeAyarlari.PortName;
-            serialPort.BaudRate = Convert.ToInt32(seriHaberlesmeAyarlari.BaudRate);
-            serialPort.DataBits = Convert.ToInt32(seriHaberlesmeAyarlari.DataBit);
-            serialPort.Handshake = (Handshake)Convert.ToInt32(seriHaberlesmeAyarlari.HandShake);
-            serialPort.Parity = (Parity)Convert.ToInt32(seriHaberlesmeAyarlari.Parity);
-            serialPort.WriteTimeout = 1000;
-            serialPort.ReadTimeout = 1000;
             depozitoUcreti = int.Parse(txtDepozitoUcreti.Text);
             try
             {
+                serialPort = new SerialPort();
+                serialPort.PortName = seriHaberlesmeAyarlari.PortName;
+                serialPort.BaudRate = Convert.ToInt32(seriHaberlesmeAyarlari.BaudRate);
+                serialPort.DataBits = Convert.ToInt32(seriHaberlesmeAyarlari.DataBit);
+                serialPort.Handshake = (Handshake)Convert.ToInt32(seriHaberlesmeAyarlari.HandShake);
+                serialPort.Parity = (Parity)Convert.ToInt32(seriHaberlesmeAyarlari.Parity);
+                serialPort.WriteTimeout = 1000;
+                serialPort.ReadTimeout = 1000;
                 if (serialPort.IsOpen == false)
                 {
                     serialPort.Open();
