@@ -32,7 +32,7 @@ namespace CarWash
 
         private void frmKontorYukleme_Load(object sender, EventArgs e)
         {
-           
+
             try
             {
                 serialPort = new SerialPort();
@@ -131,39 +131,50 @@ namespace CarWash
                     if (int.TryParse(txtKontorMiktari.Text, out kontor) == false)
                         kontor = 0;
                     bakiye += kontor;
-                    var command = "%HW001011A72A9B526F2CE0011223344556677" + bakiye.ToString("X2") + "0100112233445500**\r";
-                    serialPort.Write(command);
-                    Thread.Sleep(250);
-                    var result = serialPort.ReadExisting();
-                    if (result.Substring(6, 1) == "O")
+                    if (bakiye > 255)
                     {
-                        MessageBox.Show("Kontör Yükleme İşlemi Gerçekleştirildi", "Kontör Yükleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        serialPort.Write("%HR001011A72A9B526F2CE**\r");
-                        Thread.Sleep(200);
-                        var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
-                        txtYukluKontor.Text = receiveTemp.ToString();
+                        MessageBox.Show("Kart Bakiyesi 255'den fazla olamaz", "Limit Aşımı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtKontorMiktari.Clear();
                         txtHedefKontor.Clear();
                         txtAlinacakOdeme.Clear();
-                        if (!DataTransferObject.AddKasaHareketleri(new KasaHareketleri { Bakiye = (bakiye - kontor), KartSeriNo = kartSeriNo, YuklenenKontor = kontor, Tarih = DateTime.Now }))
+                    }
+                    else
+                    {
+                        var command = "%HW001011A72A9B526F2CE0011223344556677" + bakiye.ToString("X2") + "0100112233445500**\r";
+                        serialPort.Write(command);
+                        Thread.Sleep(250);
+                        var result = serialPort.ReadExisting();
+                        if (result.Substring(6, 1) == "O")
                         {
-                            MessageBox.Show("Veritabanına ekleme işleminde hata oluştu!");
-                        }
-                        else
-                        {
-                            txtToplamYukleme.Clear();
-                            txtToplamYukleme.Text = ToplamYukleme(kartSeriNo).ToString();
-
-                            if (!YuklenenKontoruKasayaEkleme(kontor) == true)
+                            MessageBox.Show("Kontör Yükleme İşlemi Gerçekleştirildi", "Kontör Yükleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            Thread.Sleep(200);
+                            var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
+                            txtYukluKontor.Text = receiveTemp.ToString();
+                            txtKontorMiktari.Clear();
+                            txtHedefKontor.Clear();
+                            txtAlinacakOdeme.Clear();
+                            if (!DataTransferObject.AddKasaHareketleri(new KasaHareketleri { Bakiye = (bakiye - kontor), KartSeriNo = kartSeriNo, YuklenenKontor = kontor, Tarih = DateTime.Now }))
                             {
-                                MessageBox.Show("Kasaya eklenemedi!");
+                                MessageBox.Show("Veritabanına ekleme işleminde hata oluştu!");
                             }
-                            if (ToplamYukleme(kartSeriNo) >= 1000)
+                            else
                             {
-                                MessageBox.Show("Tebrikler 1000 Kontor Sınırını Aşarak Bizden Hediye Kazandınız!", "Hediye", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtToplamYukleme.Clear();
+                                txtToplamYukleme.Text = ToplamYukleme(kartSeriNo).ToString();
+
+                                if (!YuklenenKontoruKasayaEkleme(kontor) == true)
+                                {
+                                    MessageBox.Show("Kasaya eklenemedi!");
+                                }
+                                if (ToplamYukleme(kartSeriNo) >= 1000)
+                                {
+                                    MessageBox.Show("Tebrikler 1000 Kontor Sınırını Aşarak Bizden Hediye Kazandınız!", "Hediye", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
                         }
                     }
+
                 }
             }
             catch (Exception)

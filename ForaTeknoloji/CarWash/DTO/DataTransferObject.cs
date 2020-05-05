@@ -206,7 +206,7 @@ namespace CarWash
                         {
                             var t1 = Tarih1;
                             var t2 = Tarih2;
-                            queryString = "SELECT * FROM KasaHareketleri WHERE Tarih >= #" + t1 + "# AND Tarih < #" + t2 + "#  ORDER BY ID DESC";
+                            queryString = "SELECT * FROM KasaHareketleri WHERE Tarih >= #" + t1 + "# AND Tarih <= #" + t2 + "#  ORDER BY ID DESC";
 
                         }
                         command.CommandText = queryString;

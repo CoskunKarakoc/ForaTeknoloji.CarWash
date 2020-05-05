@@ -27,7 +27,6 @@ namespace CarWash
         int yikamaKontorMik = 0;
         int kopukSuresi = 0;
         int kopukKontorMik = 0;
-
         Dictionary<int, string> parityData = new Dictionary<int, string>();
 
         public frmAyar()
@@ -155,7 +154,6 @@ namespace CarWash
 
             try
             {
-
                 if (tCPClient != null && tCPClient.Client != null)
                 {
                     if (tCPClient.Connected == true)

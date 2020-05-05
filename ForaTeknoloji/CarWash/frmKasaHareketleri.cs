@@ -21,7 +21,7 @@ namespace CarWash
 
         private void frmKasaHareketleri_Load(object sender, EventArgs e)
         {
-            foreach (var kasaHareketleri in DataTransferObject.GetListKasaHareketleri(null,null))
+            foreach (var kasaHareketleri in DataTransferObject.GetListKasaHareketleri(null, null))
             {
                 ListViewItem listViewItem = new ListViewItem();
                 listViewItem.Text = kasaHareketleri.ID.ToString();
@@ -79,8 +79,8 @@ namespace CarWash
         private void button2_Click(object sender, EventArgs e)
         {
             listViewKasaHareketleri.Items.Clear();
-            var tarih1 = dateTimeKasaHareketleri.Value.ToString("dd-MM-yyyy");
-            var tarih2 = dateTimeKasaHareketleri.Value.AddDays(1).ToString("dd-MM-yyyy");
+            var tarih1 = dateTimeKasaHareketleriBaslangic.Value.ToString("dd-MM-yyyy");
+            var tarih2 = dateTimeKasaHareketleriBitis.Value.ToString("dd-MM-yyyy");
             foreach (var kasaHareketleri in DataTransferObject.GetListKasaHareketleri(tarih1, tarih2))
             {
                 ListViewItem listViewItem = new ListViewItem();

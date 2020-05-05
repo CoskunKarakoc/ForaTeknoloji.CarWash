@@ -35,9 +35,12 @@
             this.Bakiye = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.YuklenenKontor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Tarih = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateTimeKasaHareketleri = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeKasaHareketleriBaslangic = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimeKasaHareketleriBitis = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // listViewKasaHareketleri
@@ -82,13 +85,13 @@
             this.Tarih.Text = "Tarih";
             this.Tarih.Width = 364;
             // 
-            // dateTimeKasaHareketleri
+            // dateTimeKasaHareketleriBaslangic
             // 
-            this.dateTimeKasaHareketleri.CalendarFont = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dateTimeKasaHareketleri.Location = new System.Drawing.Point(12, 68);
-            this.dateTimeKasaHareketleri.Name = "dateTimeKasaHareketleri";
-            this.dateTimeKasaHareketleri.Size = new System.Drawing.Size(383, 20);
-            this.dateTimeKasaHareketleri.TabIndex = 1;
+            this.dateTimeKasaHareketleriBaslangic.CalendarFont = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateTimeKasaHareketleriBaslangic.Location = new System.Drawing.Point(80, 68);
+            this.dateTimeKasaHareketleriBaslangic.Name = "dateTimeKasaHareketleriBaslangic";
+            this.dateTimeKasaHareketleriBaslangic.Size = new System.Drawing.Size(383, 20);
+            this.dateTimeKasaHareketleriBaslangic.TabIndex = 1;
             // 
             // button2
             // 
@@ -98,7 +101,7 @@
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(417, 19);
+            this.button2.Location = new System.Drawing.Point(500, 19);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(184, 94);
             this.button2.TabIndex = 16;
@@ -111,21 +114,50 @@
             this.textBox5.BackColor = System.Drawing.SystemColors.HotTrack;
             this.textBox5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox5.ForeColor = System.Drawing.Color.Gold;
-            this.textBox5.Location = new System.Drawing.Point(12, 19);
+            this.textBox5.Location = new System.Drawing.Point(80, 19);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(383, 31);
             this.textBox5.TabIndex = 17;
             this.textBox5.Text = "Tarihe Göre Filtrelere";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Başlangıç:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Bitiş:";
+            // 
+            // dateTimeKasaHareketleriBitis
+            // 
+            this.dateTimeKasaHareketleriBitis.CalendarFont = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dateTimeKasaHareketleriBitis.Location = new System.Drawing.Point(80, 94);
+            this.dateTimeKasaHareketleriBitis.Name = "dateTimeKasaHareketleriBitis";
+            this.dateTimeKasaHareketleriBitis.Size = new System.Drawing.Size(383, 20);
+            this.dateTimeKasaHareketleriBitis.TabIndex = 19;
+            // 
             // frmKasaHareketleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 557);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dateTimeKasaHareketleriBitis);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dateTimeKasaHareketleri);
+            this.Controls.Add(this.dateTimeKasaHareketleriBaslangic);
             this.Controls.Add(this.listViewKasaHareketleri);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmKasaHareketleri";
@@ -144,8 +176,11 @@
         private System.Windows.Forms.ColumnHeader Bakiye;
         private System.Windows.Forms.ColumnHeader YuklenenKontor;
         private System.Windows.Forms.ColumnHeader Tarih;
-        private System.Windows.Forms.DateTimePicker dateTimeKasaHareketleri;
+        private System.Windows.Forms.DateTimePicker dateTimeKasaHareketleriBaslangic;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimeKasaHareketleriBitis;
     }
 }
