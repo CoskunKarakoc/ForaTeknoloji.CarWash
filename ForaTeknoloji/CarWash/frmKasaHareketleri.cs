@@ -79,8 +79,8 @@ namespace CarWash
         private void button2_Click(object sender, EventArgs e)
         {
             listViewKasaHareketleri.Items.Clear();
-            var tarih1 = dateTimeKasaHareketleriBaslangic.Value.ToString("dd-MM-yyyy");
-            var tarih2 = dateTimeKasaHareketleriBitis.Value.ToString("dd-MM-yyyy");
+            var tarih1 = dateTimeKasaHareketleriBaslangic.Value.ToString("MM-dd-yyyy");
+            var tarih2 = dateTimeKasaHareketleriBitis.Value.AddDays(1).ToString("MM-dd-yyyy");
             foreach (var kasaHareketleri in DataTransferObject.GetListKasaHareketleri(tarih1, tarih2))
             {
                 ListViewItem listViewItem = new ListViewItem();
