@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using CarWash.Entity;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace CarWash
 {
@@ -24,10 +25,15 @@ namespace CarWash
         private string kartSeriNo = "";
         SerialPort serialPort;
         SeriHaberlesmeAyarlari seriHaberlesmeAyarlari;
+        private string Key = "FFFFFFFFFFFF";
         public frmKontorYukleme()
         {
             InitializeComponent();
             seriHaberlesmeAyarlari = GetSeriHaberlesmeAyarlari();
+            if (ReadSettings("Apple").Length > 0)
+            {
+                Key = ReadSettings("Apple");
+            }
         }
 
         private void frmKontorYukleme_Load(object sender, EventArgs e)
@@ -47,7 +53,7 @@ namespace CarWash
                 {
                     serialPort.Open();
                     serialPort.DiscardOutBuffer();
-                    serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                    serialPort.Write("%HR001011A" + Key + "**\r");
                     Thread.Sleep(200);
                     serialReceive = serialPort.ReadExisting();
                     kontorMiktari = int.Parse(serialReceive.Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
@@ -140,14 +146,14 @@ namespace CarWash
                     }
                     else
                     {
-                        var command = "%HW001011A72A9B526F2CE0011223344556677" + bakiye.ToString("X2") + "0100112233445500**\r";
+                        var command = "%HW001011A" + Key + "0011223344556677" + bakiye.ToString("X2") + "0100112233445500**\r";
                         serialPort.Write(command);
                         Thread.Sleep(250);
                         var result = serialPort.ReadExisting();
                         if (result.Substring(6, 1) == "O")
                         {
                             MessageBox.Show("Kontör Yükleme İşlemi Gerçekleştirildi", "Kontör Yükleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            serialPort.Write("%HR001011A" + Key + "**\r");
                             Thread.Sleep(200);
                             var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                             txtYukluKontor.Text = receiveTemp.ToString();
@@ -289,6 +295,14 @@ namespace CarWash
                     return false;
                 }
             }
+        }
+
+
+        public static string ReadSettings(string key)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettings = (AppSettingsSection)configuration.GetSection("appSettings");
+            return appSettings.Settings[key].Value;
         }
 
     }

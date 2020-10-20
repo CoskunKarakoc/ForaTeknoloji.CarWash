@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Configuration;
 
 namespace CarWash
 {
@@ -20,15 +21,20 @@ namespace CarWash
 
         SerialPort serialPort;
         SeriHaberlesmeAyarlari seriHaberlesmeAyarlari;
+        private string Key = "FFFFFFFFFFFF";
         public frmKartaBak()
         {
             InitializeComponent();
             seriHaberlesmeAyarlari = GetSeriHaberlesmeAyarlari();
+            if (ReadSettings("Apple").Length > 0)
+            {
+                Key = ReadSettings("Apple");
+            }
         }
 
         private void frmKartaBak_Load(object sender, EventArgs e)
         {
-           
+
             try
             {
                 serialPort = new SerialPort();
@@ -45,7 +51,7 @@ namespace CarWash
                     serialPort.Open();
                     listBoxMessage.Items.Add("Kart Okuyucu Bağlantısı Sağlandı!");
                     serialPort.DiscardOutBuffer();
-                    serialPort.Write("%HR001011A72A9B526F2CE**\r"); //FFFFFFFFFFFF Varsayılan değeri
+                    serialPort.Write("%HR001011A" + Key + "**\r"); //FFFFFFFFFFFF Varsayılan değeri
                     Thread.Sleep(200);
                     var receive = serialPort.ReadExisting();
                     var receiveTemp = int.Parse(receive.Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
@@ -138,6 +144,15 @@ namespace CarWash
                 }
             }
         }
+
+
+        public static string ReadSettings(string key)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettings = (AppSettingsSection)configuration.GetSection("appSettings");
+            return appSettings.Settings[key].Value;
+        }
+
 
     }
 }

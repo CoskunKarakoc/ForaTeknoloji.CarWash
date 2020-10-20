@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SQLite;
@@ -22,18 +23,23 @@ namespace CarWash
         int kontorMiktari = 0;
         int depozitoUcreti = -2;
         int tempKontroMiktari = 0;
+        private string Key = "FFFFFFFFFFFF";
         public frmKartIptal()
         {
             InitializeComponent();
             seriHaberlesmeAyarlari = GetSeriHaberlesmeAyarlari();
             depozitoUcreti = seriHaberlesmeAyarlari.DepozitoUcreti;
+            if (ReadSettings("Apple").Length > 0)
+            {
+                Key = ReadSettings("Apple");
+            }
         }
 
 
 
         private void frmKartIptal_Load(object sender, EventArgs e)
         {
-          
+
             listBox1.Items.Clear();
             try
             {
@@ -49,7 +55,7 @@ namespace CarWash
                 {
                     serialPort.Open();
                     serialPort.DiscardOutBuffer();
-                    serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                    serialPort.Write("%HR001011A" + Key + "**\r");
                     Thread.Sleep(200);
                     kontorMiktari = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                     tempKontroMiktari = kontorMiktari;
@@ -80,14 +86,14 @@ namespace CarWash
                         serialPort.DiscardOutBuffer();
                         kontorMiktari = 0;
                         string kartPasif = "00";
-                        var command = "%HW001011A72A9B526F2CE0011223344556677" + kontorMiktari.ToString("X2") + kartPasif + "00112233445500**\r";
+                        var command = "%HW001011A" + Key + "0011223344556677" + kontorMiktari.ToString("X2") + kartPasif + "00112233445500**\r";
                         serialPort.Write(command);
                         Thread.Sleep(250);
                         var result = serialPort.ReadExisting();
                         if (result.Substring(6, 1) == "O")
                         {
                             listBox1.Items.Add("Kart İptali Gerçekleştirildi...");
-                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            serialPort.Write("%HR001011A" + Key + "**\r");
                             Thread.Sleep(200);
                             var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                             txtKontorMiktari.Clear();
@@ -118,14 +124,14 @@ namespace CarWash
                         serialPort.Open();
                         serialPort.DiscardOutBuffer();
                         string kartPasif = "00";
-                        var command = "%HW001011A72A9B526F2CE0011223344556677" + kontorMiktari.ToString("X2") + kartPasif + "00112233445500**\r";
+                        var command = "%HW001011A" + Key + "0011223344556677" + kontorMiktari.ToString("X2") + kartPasif + "00112233445500**\r";
                         serialPort.Write(command);
                         Thread.Sleep(250);
                         var result = serialPort.ReadExisting();
                         if (result.Substring(6, 1) == "O")
                         {
                             listBox1.Items.Add("Kart İptali Gerçekleştirildi...");
-                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            serialPort.Write("%HR001011A" + Key + "**\r");
                             Thread.Sleep(200);
                             var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                             txtKontorMiktari.Clear();
@@ -255,6 +261,12 @@ namespace CarWash
         }
 
 
+        public static string ReadSettings(string key)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettings = (AppSettingsSection)configuration.GetSection("appSettings");
+            return appSettings.Settings[key].Value;
+        }
 
     }
 }

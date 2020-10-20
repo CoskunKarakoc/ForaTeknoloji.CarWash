@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
@@ -20,12 +21,17 @@ namespace CarWash
         SeriHaberlesmeAyarlari seriHaberlesmeAyarlari;
         string kartSeriNo;
         int depozitoUcreti = 1;
+        private string Key = "FFFFFFFFFFFF";
         public frmYeniKart()
         {
             InitializeComponent();
             seriHaberlesmeAyarlari = GetSeriHaberlesmeAyarlari();
-
             depozitoUcreti = seriHaberlesmeAyarlari.DepozitoUcreti;
+            if (ReadSettings("Apple").Length > 0)
+            {
+                Key = ReadSettings("Apple");
+            }
+
         }
 
         private void frmYeniKart_Load(object sender, EventArgs e)
@@ -46,7 +52,7 @@ namespace CarWash
                 {
                     serialPort.Open();
                     serialPort.DiscardOutBuffer();
-                    serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                    serialPort.Write("%HR001011A" + Key + "**\r");
                     Thread.Sleep(200);
                     var receive = serialPort.ReadExisting();
                     kartSeriNo = receive.Substring(10, 8);
@@ -76,13 +82,13 @@ namespace CarWash
                         serialPort.DiscardOutBuffer();
                         var kontorMiktari = 0;
                         string kartAktif = "01";
-                        var command = "%HW001011A72A9B526F2CE0011223344556677" + kontorMiktari.ToString("X2") + kartAktif + "00112233445500**\r";
+                        var command = "%HW001011A" + Key + "0011223344556677" + kontorMiktari.ToString("X2") + kartAktif + "00112233445500**\r";
                         serialPort.Write(command);
                         Thread.Sleep(250);
                         var result = serialPort.ReadExisting();
                         if (result.Substring(6, 1) == "O")
                         {
-                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            serialPort.Write("%HR001011A" + Key + "**\r");
                             Thread.Sleep(200);
                             var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                             DepozitoEkle();
@@ -111,13 +117,13 @@ namespace CarWash
                         serialPort.DiscardOutBuffer();
                         var kontorMiktari = 0;
                         string kartAktif = "01";
-                        var command = "%HW001011A72A9B526F2CE0011223344556677" + kontorMiktari.ToString("X2") + kartAktif + "00112233445500**\r";
+                        var command = "%HW001011A" + Key + "0011223344556677" + kontorMiktari.ToString("X2") + kartAktif + "00112233445500**\r";
                         serialPort.Write(command);
                         Thread.Sleep(250);
                         var result = serialPort.ReadExisting();
                         if (result.Substring(6, 1) == "O")
                         {
-                            serialPort.Write("%HR001011A72A9B526F2CE**\r");
+                            serialPort.Write("%HR001011A" + Key + "**\r");
                             Thread.Sleep(200);
                             var receiveTemp = int.Parse(serialPort.ReadExisting().Substring(34, 2), System.Globalization.NumberStyles.HexNumber);
                             ClearKartHareketleri(kartSeriNo);
@@ -226,6 +232,14 @@ namespace CarWash
                     return new SeriHaberlesmeAyarlari();
                 }
             }
+        }
+
+
+        public static string ReadSettings(string key)
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettings = (AppSettingsSection)configuration.GetSection("appSettings");
+            return appSettings.Settings[key].Value;
         }
     }
 }
